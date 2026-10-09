@@ -1,0 +1,5 @@
+hooks:
+  after_implement:
+    - extension: check-prerequisites
+      command: speckit-git-commit
+      optional: true

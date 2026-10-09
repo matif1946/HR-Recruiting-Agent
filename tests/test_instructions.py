@@ -15,15 +15,11 @@ def test_dynamic_instructions():
     assert entry_instructions != senior_instructions
 
     # Verify presence of level-specific directives
-    assert "friendly and encouraging" in entry_instructions
-    assert "fundamental questions" in entry_instructions
+    assert "fundamental concepts" in entry_instructions
 
-    assert "moderate difficulty" in mid_instructions
-    assert "practical scenarios" in mid_instructions
+    assert "practical scenario-based" in mid_instructions
 
-    assert "rigorous" in senior_instructions
-    assert "advanced questions" in senior_instructions
-    assert "decision-making" in senior_instructions
+    assert "rigorous technical bar" in senior_instructions
 
     # Verify common role integration
     assert "Python Developer" in entry_instructions

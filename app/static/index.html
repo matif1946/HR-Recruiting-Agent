@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI HR Interviewer</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- Font Awesome for the mic icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="screen active">
+            <div class="header-center">
+                <h1>AI HR INTERVIEWER</h1>
+                <p class="subtitle">Practice your interview</p>
+            </div>
+
+            <form id="setup-form">
+                <div class="form-group">
+                    <label for="candidate-name">Candidate Name</label>
+                    <input type="text" id="candidate-name" required placeholder="e.g. Jane Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="job-role">Job Role</label>
+                    <input type="text" id="job-role" required placeholder="e.g. Python Developer">
+                </div>
+
+                <div class="form-group">
+                    <label>Experience Level</label>
+                    <div class="radio-group" id="experience-buttons">
+                        <label class="radio-btn">
+                            <input type="radio" name="experience-level" value="Entry Level" required>
+                            <span>Entry</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="experience-level" value="Mid Level">
+                            <span>Mid</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="experience-level" value="Senior Level">
+                            <span>Senior</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="setup-error" class="error-banner hidden"></div>
+
+                <button type="submit" id="start-btn" class="primary-btn">Start Interview</button>
+            </form>
+        </div>
+
+        <!-- Interview Screen -->
+        <div id="interview-screen" class="screen hidden text-center">
+            <h1 class="brand-title">AI HR INTERVIEWER</h1>
+            <p id="display-role" class="role-subtitle">Python Developer • Senior</p>
+
+            <div class="progress-indicator">
+                <span id="question-progress">Question 1 of 5</span>
+            </div>
+
+            <div class="question-container">
+                <p id="ai-question" class="question-text">Initializing...</p>
+            </div>
+
+            <!-- Voice Controls -->
+            <div class="voice-interaction">
+                <button id="mic-btn" class="mic-btn idle">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <div id="voice-status" class="voice-status">Ready</div>
+                <div id="transcript-preview" class="transcript-preview hidden"></div>
+            </div>
+
+            <!-- Fallback text input (hidden by default) -->
+            <div id="text-fallback-container" class="hidden">
+                <div class="voice-error-text">
+                    <p class="voice-unavailable-msg">Voice unavailable</p>
+                    <p class="use-text-msg">Use text instead</p>
+                </div>
+                <textarea id="text-answer" rows="3" placeholder="Type your answer..."></textarea>
+                <button id="submit-answer-btn" class="primary-btn">Submit</button>
+            </div>
+
+            <div id="interview-error" class="error-banner hidden mt-1"></div>
+
+            <!-- Silence Detection Modal overlay -->
+            <div id="silence-modal" class="silence-overlay hidden">
+                <div class="silence-card">
+                    <p>Are you still there? Please answer when you're ready.</p>
+                    <button id="silence-retry-btn" class="primary-btn">Retry</button>
+                    <button id="silence-text-btn" class="secondary-btn">Text Answer</button>
+                    <button id="silence-end-btn" class="tertiary-btn">End Interview</button>
+                </div>
+            </div>
+
+            <div class="footer-actions">
+                <button id="end-interview-btn" class="tertiary-btn">End Interview</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen hidden results-screen">
+            <h1 class="text-center results-title">INTERVIEW COMPLETE</h1>
+
+            <div class="candidate-details">
+                <div id="res-candidate-name" class="res-name"></div>
+                <div id="res-job-role" class="res-role"></div>
+                <div id="res-experience-level" class="res-level"></div>
+            </div>
+
+            <div class="assessment-section">
+                <h3>Overall Summary</h3>
+                <hr class="section-divider">
+                <p id="summary-text" class="assessment-item-text"></p>
+            </div>
+
+            <div class="assessment-section">
+                <h3>Strengths</h3>
+                <ul id="strengths-list" class="assessment-list"></ul>
+            </div>
+
+            <div class="assessment-section">
+                <h3>Areas for Improvement</h3>
+                <ul id="improvements-list" class="assessment-list"></ul>
+            </div>
+
+            <div class="assessment-section">
+                <h3>Overall Assessment</h3>
+                <p id="assessment-text" class="assessment-item-text"></p>
+            </div>
+
+            <div class="disclaimer hidden">
+                <small id="assessment-disclaimer"></small>
+            </div>
+
+            <div class="footer-actions mt-3">
+                <button id="restart-btn" class="secondary-btn">New Interview</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

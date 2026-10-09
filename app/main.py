@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 try:
     from google import genai
@@ -8,15 +9,18 @@ try:
 except ImportError:
     HAS_GENAI = False
 
+from app.api.interviews import router as interviews_router
+
 # Load environment variables
-load_dotenv()
+load_dotenv(override=True)
 
 app = FastAPI(title="AI HR Interview Screening API")
 
-@app.get("/")
-def read_root():
-    return {"status": "ok", "service": "HR Interview Screening Agent API"}
+# API routers
+app.include_router(interviews_router)
 
+# Mount static files
+app.mount("/", StaticFiles(directory="app/static", html=True), name="static")
 
 def verify_adk_agent():
     """
@@ -40,7 +44,7 @@ def verify_adk_agent():
         client = genai.Client(api_key=api_key)
 
         # Create a simple agent/chat session
-        chat = client.chats.create(model="gemini-2.5-flash")
+        chat = client.chats.create(model="Gemini 3.5 Flash-Lite")
 
         print("Application -> Google ADK -> Gemini...")
         response = chat.send_message("Reply 'OK' if you can receive this message.")

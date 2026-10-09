@@ -56,10 +56,10 @@ description: "Task list for AI Voice Interview Screening feature implementation"
 ### Implementation for User Story 1
 
 - [x] T014 [US1] Implement first-question generation: Generate initial question according to role and level in `app/agent/interviewer.py`
-- [ ] T015 [US1] Create interview API: Implement endpoint `POST /api/interviews` returning session ID and initial question in `app/api/interviews.py`
-- [ ] T016 [P] [US1] Create application layout: Build clean, responsive application skeleton in `app/static/index.html` and `app/static/style.css`
-- [ ] T017 [US1] Build candidate setup screen: Implement Name, Job Role, Experience Level selection, and Start Interview button in `app/static/index.html` and `app/static/app.js`
-- [ ] T018 [US1] Add loading and error states for setup: Handle loading indicators and invalid input banners in `app/static/app.js` and `app/static/style.css`
+- [x] T015 [US1] Create interview API: Implement endpoint `POST /api/interviews` returning session ID and initial question in `app/api/interviews.py`
+- [x] T016 [P] [US1] Create application layout: Build clean, responsive application skeleton in `app/static/index.html` and `app/static/style.css`
+- [x] T017 [US1] Build candidate setup screen: Implement Name, Job Role, Experience Level selection, and Start Interview button in `app/static/index.html` and `app/static/app.js`
+- [x] T018 [US1] Add loading and error states for setup: Handle loading indicators and invalid input banners in `app/static/app.js` and `app/static/style.css`
 
 **Checkpoint**: At this point, User Story 1 generates a session ID and initial AI question successfully.
 
@@ -75,16 +75,16 @@ description: "Task list for AI Voice Interview Screening feature implementation"
 
 - [x] T019 [P] [US2] Implement context-aware next-question generation: Generate subsequent questions using previous responses in `app/agent/interviewer.py`
 - [x] T020 [P] [US2] Prevent unnecessary repetition: Ensure interviewer does not repeat previous questions in `app/agent/interviewer.py`
-- [ ] T021 [US2] Create response API: Implement endpoint for submitting candidate responses at `POST /api/interviews/{id}/response` in `app/api/interviews.py`
-- [ ] T022 [US2] Build interview screen: Implement candidate info header, progress indicator, AI question display, and voice interaction container in `app/static/index.html` and `app/static/app.js`
-- [ ] T023 [US2] Implement browser microphone access: Request Web Speech mic permissions and handle denial gracefully in `app/static/app.js`
-- [ ] T024 [US2] Implement candidate voice capture and silence handling: Capture spoken response via SpeechRecognition and detect prolonged silence timeouts gracefully in `app/static/app.js`
-- [ ] T025 [US2] Implement speech processing: Convert candidate voice response to text string for API submission in `app/static/app.js`
-- [ ] T026 [US2] Connect voice response to interview agent: Send processed candidate response through interview workflow in `app/static/app.js`
-- [ ] T027 [US2] Implement AI voice output: Play interviewer questions using SpeechSynthesis in `app/static/app.js`
-- [ ] T028 [US2] Implement voice interaction states: Visually reflect IDLE, LISTENING, PROCESSING, AI_SPEAKING, ERROR, and COMPLETED in `app/static/app.js` and `app/static/style.css`
-- [ ] T029 [US2] Add microphone/interview controls: Implement start/stop speaking, retry mic, and end interview controls in `app/static/index.html` and `app/static/app.js`
-- [ ] T030 [US2] Prevent conflicting voice actions: Disable duplicate recording actions while AI is speaking or processing in `app/static/app.js`
+- [x] T021 [US2] Create response API: Implement endpoint for submitting candidate responses at `POST /api/interviews/{id}/response` in `app/api/interviews.py`
+- [x] T022 [US2] Build interview screen: Implement candidate info header, progress indicator, AI question display, and voice interaction container in `app/static/index.html` and `app/static/app.js`
+- [x] T023 [US2] Implement browser microphone access: Request Web Speech mic permissions and handle denial gracefully in `app/static/app.js`
+- [x] T024 [US2] Implement candidate voice capture and silence handling: Capture spoken response via SpeechRecognition and detect prolonged silence timeouts gracefully in `app/static/app.js`
+- [x] T025 [US2] Implement speech processing: Convert candidate voice response to text string for API submission in `app/static/app.js`
+- [x] T026 [US2] Connect voice response to interview agent: Send processed candidate response through interview workflow in `app/static/app.js`
+- [x] T027 [US2] Implement AI voice output: Play interviewer questions using SpeechSynthesis in `app/static/app.js`
+- [x] T028 [US2] Implement voice interaction states: Visually reflect IDLE, LISTENING, PROCESSING, AI_SPEAKING, ERROR, and COMPLETED in `app/static/app.js` and `app/static/style.css`
+- [x] T029 [US2] Add microphone/interview controls: Implement start/stop speaking, retry mic, and end interview controls in `app/static/index.html` and `app/static/app.js`
+- [x] T030 [US2] Prevent conflicting voice actions: Disable duplicate recording actions while AI is speaking or processing in `app/static/app.js`
 
 **Checkpoint**: Working continuous back-and-forth voice interview iteration via Browser Web Speech APIs.
 
@@ -98,9 +98,9 @@ description: "Task list for AI Voice Interview Screening feature implementation"
 
 ### Implementation for User Story 3
 
-- [ ] T031 [US3] Implement microphone error handling and capability checks: Explicitly check for Web Speech API browser support (`window.SpeechRecognition`), and gracefully handle permission denied and device unavailable errors in `app/static/app.js`
-- [ ] T032 [US3] Implement text-answer fallback: Provide accessible text input area submitting to the same interview API in `app/static/index.html` and `app/static/app.js`
-- [ ] T033 [US3] Preserve interview state during voice failures: Ensure microphone errors do not restart or corrupt current session state in `app/static/app.js`
+- [x] T031 [US3] Implement microphone error handling and capability checks: Explicitly check for Web Speech API browser support (`window.SpeechRecognition`), and gracefully handle permission denied and device unavailable errors in `app/static/app.js`
+- [x] T032 [US3] Implement text-answer fallback: Provide accessible text input area submitting to the same interview API in `app/static/index.html` and `app/static/app.js`
+- [x] T033 [US3] Preserve interview state during voice failures: Ensure microphone errors do not restart or corrupt current session state in `app/static/app.js`
 
 ---
 
@@ -112,12 +112,12 @@ description: "Task list for AI Voice Interview Screening feature implementation"
 
 ### Implementation for User Story 4
 
-- [ ] T034 [US4] Implement five-question interview flow: Stop question progression after 5 answered questions in `app/services/interview_service.py`
-- [ ] T035 [US4] Implement final assessment generation: Generate overall summary, key strengths, and improvement areas in `app/agent/assessment.py`
-- [ ] T036 [US4] Ensure assessment is screening assistance: Include explicit disclaimer that report is an aid and not a hiring decision in `app/agent/assessment.py`
-- [ ] T037 [P] [US4] Create interview-state API: Implement endpoint for retrieving current state `GET /api/interviews/{id}` in `app/api/interviews.py`
-- [ ] T038 [P] [US4] Create interview completion API: Implement endpoint for terminating interview early `POST /api/interviews/{id}/end` in `app/api/interviews.py`
-- [ ] T039 [US4] Build results screen: Render interview completion message, candidate summary, strengths, areas for improvement, assessment, and restart button in `app/static/index.html` and `app/static/app.js`
+- [x] T034 [US4] Implement five-question interview flow: Stop question progression after 5 answered questions in `app/services/interview_service.py`
+- [x] T035 [US4] Implement final assessment generation: Generate overall summary, key strengths, and improvement areas in `app/agent/assessment.py`
+- [x] T036 [US4] Ensure assessment is screening assistance: Include explicit disclaimer that report is an aid and not a hiring decision in `app/agent/assessment.py`
+- [x] T037 [P] [US4] Create interview-state API: Implement endpoint for retrieving current state `GET /api/interviews/{id}` in `app/api/interviews.py`
+- [x] T038 [P] [US4] Create interview completion API: Implement endpoint for terminating interview early `POST /api/interviews/{id}/end` in `app/api/interviews.py`
+- [x] T039 [US4] Build results screen: Render interview completion message, candidate summary, strengths, areas for improvement, assessment, and restart button in `app/static/index.html` and `app/static/app.js`
 
 **Checkpoint**: Happy path completed strictly through to Assessment report rendering.
 
@@ -128,29 +128,29 @@ description: "Task list for AI Voice Interview Screening feature implementation"
 **Purpose**: UI/UX refinement, comprehensive testing, error hardening, responsive styling, and project documentation
 
 ### UI/UX Refinement
-- [ ] T040 Add API error handling: Implement global exception handlers preventing credential/stack trace leaks in `app/main.py`
-- [ ] T041 Refine professional visual design: Polish typography, spacing, visual hierarchy, and restrained color palette in `app/static/style.css`
-- [ ] T042 Improve voice feedback: Enhance visual indicators for AI speaking, candidate listening, candidate speaking, and processing states in `app/static/style.css` and `app/static/app.js`
-- [ ] T043 Add interview progress: Display "Question X of 5" status prominently in `app/static/index.html` and `app/static/app.js`
-- [ ] T044 Verify mobile usability: Ensure setup, interview controls, voice interactions, and results screens are responsive and accessible on mobile in `app/static/style.css`
+- [x] T040 Add API error handling: Implement global exception handlers preventing credential/stack trace leaks in `app/main.py`
+- [x] T041 Refine professional visual design: Polish typography, spacing, visual hierarchy, and restrained color palette in `app/static/style.css`
+- [x] T042 Improve voice feedback: Enhance visual indicators for AI speaking, candidate listening, candidate speaking, and processing states in `app/static/style.css` and `app/static/app.js`
+- [x] T043 Add interview progress: Display "Question X of 5" status prominently in `app/static/index.html` and `app/static/app.js`
+- [x] T044 Verify mobile usability: Ensure setup, interview controls, voice interactions, and results screens are responsive and accessible on mobile in `app/static/style.css`
 
 ### Comprehensive Testing
-- [ ] T045 [P] Test candidate validation: Verify valid and invalid candidate setup data in `tests/test_interview.py`
-- [ ] T046 [P] Test dynamic instruction behavior: Verify all three experience levels produce appropriate runtime instructions in `tests/test_instructions.py`
-- [ ] T047 [P] Test interview progression: Verify questions and answers progress correctly in `tests/test_interview.py`
-- [ ] T048 [P] Test five-question completion: Verify the interview completes after five questions in `tests/test_interview.py`
-- [ ] T049 [P] Test final assessment: Verify the final assessment contains all required sections in `tests/test_interview.py`
-- [ ] T050 [P] Test API error handling: Verify failures produce user-friendly errors in `tests/test_api.py`
-- [ ] T051 [P] Test voice failure scenarios: Test microphone denied, unavailable, and processing failures gracefully recover (via mocked backend/UI tests) in `tests/test_api.py`
-- [ ] T052 [P] Test text fallback: Verify that text fallback continues the same interview correctly in `tests/test_api.py`
-- [ ] T053 [P] Test complete end-to-end interview: Test full backend flow from Setup -> Start -> Next question -> Assessment in `tests/test_api.py`
+- [x] T045 [P] Test candidate validation: Verify valid and invalid candidate setup data in `tests/test_interview.py`
+- [x] T046 [P] Test dynamic instruction behavior: Verify all three experience levels produce appropriate runtime instructions in `tests/test_instructions.py`
+- [x] T047 [P] Test interview progression: Verify questions and answers progress correctly in `tests/test_interview.py`
+- [x] T048 [P] Test five-question completion: Verify the interview completes after five questions in `tests/test_interview.py`
+- [x] T049 [P] Test final assessment: Verify the final assessment contains all required sections in `tests/test_interview.py`
+- [x] T050 [P] Test API error handling: Verify failures produce user-friendly errors in `tests/test_api.py`
+- [x] T051 [P] Test voice failure scenarios: Test microphone denied, unavailable, and processing failures gracefully recover (via mocked backend/UI tests) in `tests/test_api.py`
+- [x] T052 [P] Test text fallback: Verify that text fallback continues the same interview correctly in `tests/test_api.py`
+- [x] T053 [P] Test complete end-to-end interview: Test full backend flow from Setup -> Start -> Next question -> Assessment in `tests/test_api.py`
 
 ### Documentation & Verification
-- [ ] T054 Create README: Document project purpose, features, ADK usage, flow, setup, and testing in `README.md`
-- [ ] T055 Document architecture: Include simple Frontend -> API -> ADK -> Gemini architecture diagram/explanation in `README.md`
-- [ ] T056 Document dynamic instructions: Explain entry/mid/senior level modification of runtime instructions in `README.md`
-- [ ] T057 Document voice architecture: Explain Web Speech API to Backend AI response flow in `README.md`
-- [ ] T058 Run complete MVP verification: Execute manual end-to-end MVP validation according to steps defined in `quickstart.md`
+- [x] T054 Create README: Document project purpose, features, ADK usage, flow, setup, and testing in `README.md`
+- [x] T055 Document architecture: Include simple Frontend -> API -> ADK -> Gemini architecture diagram/explanation in `README.md`
+- [x] T056 Document dynamic instructions: Explain entry/mid/senior level modification of runtime instructions in `README.md`
+- [x] T057 Document voice architecture: Explain Web Speech API to Backend AI response flow in `README.md`
+- [x] T058 Run complete MVP verification: Execute manual end-to-end MVP validation according to steps defined in `quickstart.md`
 
 ---
 

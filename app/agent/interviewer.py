@@ -59,11 +59,25 @@ class InterviewerAgent:
             temperature=0.7
         )
 
-        chat = self.client.chats.create(model="gemini-2.5-flash", config=config)
         prompt = "Hello, please introduce yourself briefly and ask the very first interview question."
-        response = chat.send_message(prompt)
 
-        if response.text:
+        def _send():
+            chat = self.client.chats.create(model="gemini-3.8-flash", config=config)
+            return chat.send_message(prompt)
+
+        import time
+        response = None
+        for attempt in range(3):
+            try:
+                response = _send()
+                break
+            except Exception as e:
+                print(f"Failed to generate first question (attempt {attempt+1}): {e}")
+                if attempt == 2:
+                    return f"Welcome {interview_state.candidate.name}, to start, could you tell me about your experience as a {interview_state.candidate.job_role}?"
+                time.sleep(1)
+
+        if response and response.text:
             return response.text
         return "Can you tell me about yourself?"
 
@@ -111,7 +125,7 @@ class InterviewerAgent:
         )
 
         chat = self.client.chats.create(
-            model="gemini-2.5-flash",
+            model="gemini-3.8-flash",
             config=config,
             history=chat_history
         )
@@ -123,8 +137,18 @@ class InterviewerAgent:
             "Please respond naturally to the candidate's answer above, then ask the next question. Do not repeat previous questions."
         )
 
-        response = chat.send_message(prompt)
+        import time
+        response = None
+        for attempt in range(3):
+            try:
+                response = chat.send_message(prompt)
+                break
+            except Exception as e:
+                print(f"Failed to generate next question (attempt {attempt+1}): {e}")
+                if attempt == 2:
+                    return f"Thank you for that answer. Here is generic generated question {interview_state.current_question_number}."
+                time.sleep(1)
 
-        if response.text:
+        if response and response.text:
             return response.text
         return "Thank you. Let's move to the next topic."
